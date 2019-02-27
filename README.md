@@ -26,7 +26,7 @@ These can be combined into a video using [FFmpeg](https://ffmpeg.org/)
 by running the following command while in the `render/` directory:
 
 ```bash
-fmpeg -r 60 -f image2 -s 2560x1440 -i %d.png -vcodec libx264 -crf 15 video.mp4
+ffmpeg -r 60 -f image2 -s 2560x1440 -i %d.png -vcodec libx264 -crf 15 video.mp4
 ```
 
 ## License
