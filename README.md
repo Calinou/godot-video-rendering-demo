@@ -2,6 +2,12 @@
 
 **A project that shows how to render high-quality "offline" videos with Godot.**
 
+## Example output
+
+[![Preview](https://thumbs.gfycat.com/MemorableUncommonCrownofthornsstarfish-small.gif)](https://gfycat.com/memorableuncommoncrownofthornsstarfish)
+
+*Click for higher quality.*
+
 ## Installation
 
 **This demo currently requires
