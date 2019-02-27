@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://camera.gd" type="Script" id=1]
+[ext_resource path="res://scenes/suzanne/Suzanne.gltf" type="PackedScene" id=2]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.176471, 0.211765, 0.309804, 1 )
+sky_horizon_color = Color( 0.67451, 0.611765, 0.505882, 1 )
+sun_color = Color( 2, 1.9, 1.5, 1 )
+sun_latitude = 15.0
+sun_angle_min = 0.0
+sun_angle_max = 50.0
+sun_curve = 0.0669861
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+tonemap_mode = 2
+ssao_enabled = true
+ssao_quality = 2
+dof_blur_far_enabled = true
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+glow_enabled = true
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+
+[sub_resource type="Animation" id=3]
+resource_name = "move_camera"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 2, -6 ), Transform( -0.797671, 0, -0.603093, 0, 1, 0, 0.603093, 0, -0.797671, 3.8204, 2, -3.77011 ) ]
+}
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 64, 64 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="SpatialMaterial" id=6]
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 4, 4, 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -11, 2, -6 )
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move_camera"
+anims/move_camera = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0, 2, 1 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 9, 2, 3 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Suzanne" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.28558, 0.396534, -1.47988, 0, 1.93185, 0.517638, 1.53209, 0.332731, -1.24177, -5.89249, 2.4361, -3.8135 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 0, 0 )
+light_color = Color( 1, 0.984314, 0.92549, 1 )
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.0
+directional_shadow_bias_split_scale = 0.45
+directional_shadow_max_distance = 120.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="Camera" method="_on_animation_player_animation_finished"]

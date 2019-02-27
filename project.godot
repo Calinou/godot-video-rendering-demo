@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Video Rendering Test"
+run/main_scene="res://demo.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
+window/dpi/allow_hidpi=true
+window/vsync/use_vsync=false
+
+[rendering]
+
+quality/filters/anisotropic_filter_level=16
+vram_compression/import_etc2=false
+quality/directional_shadow/size=16384
+quality/shadows/filter_mode=2
+quality/filters/msaa=2
+environment/default_environment="res://default_env.tres"

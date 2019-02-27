@@ -1,0 +1,9 @@
+# Godot-specific ignores
+.import/
+
+# Mono-specific ignores
+.mono/
+
+# Build artifacts
+icon.ico
+dist/
