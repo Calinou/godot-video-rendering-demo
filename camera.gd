@@ -1,3 +1,6 @@
+# Copyright © 2019 Hugo Locurcio and contributors - MIT License
+# See `LICENSE.md` included in the source distribution for details.
+
 extends Camera
 
 func _ready() -> void:
