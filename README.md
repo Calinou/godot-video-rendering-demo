@@ -20,6 +20,9 @@ or later.**
 
 ## Usage
 
+**Make sure to run the project from the command line using the `--fixed-fps 60`
+command line argument. Otherwise, frame timings won't be correct.**
+
 When run *outside of the editor*, frames will be rendered and saved to
 PNG images in the `render/` directory located in the project data directory.
 These can be combined into a video using [FFmpeg](https://ffmpeg.org/)
